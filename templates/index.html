@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drug Search Helper</title>
+<script>
+// JavaScript to handle location and drug availability
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to get user location
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  // Function to display position
+  function showPosition(position) {
+    document.getElementById('userLocation').value = position.coords.latitude + ", " + position.coords.longitude;
+  }
+
+  // Call getLocation when the form is loaded
+  getLocation();
+  
+  // Placeholder function to fetch drug availability
+  function checkDrugAvailability() {
+    // This function should make an AJAX call to your backend to check availability
+    // For now, it's just a placeholder
+  }
+  
+  // Event listener for the drug name input field to check availability
+  document.getElementById('drugName').addEventListener('change', checkDrugAvailability);
+});
+
+// Function to handle form submission
+function submitForm(event) {
+  event.preventDefault(); // Prevent the default form submission
+  console.log("test submit function")
+
+  // Get form data
+  const formData = new FormData(event.target);
+
+  // Use fetch API to submit form data and get the response
+  fetch('/submit-request', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json()) // Parse JSON response
+  .then(data => {
+    // Handle the JSON response here
+    const stockLevelsDiv = document.getElementById('stockLevels');
+    stockLevelsDiv.innerHTML = ''; // Clear previous results
+    //debugger;
+    const isEmpty = Object.keys(data).length === 0;
+    if (isEmpty){
+      const div = document.createElement('div');
+      div.textContent = "No results available"
+      stockLevelsDiv.appendChild(div);
+    } else {
+      // Create and append elements for each item in the response
+      data.forEach(item => {
+        // Check if the expected properties exist in the item
+
+
+
+        if (item.drug_name && item.dosage_form && item.therapeutic_class && item.route_of_administration && item.dosage_strength) {
+          const div = document.createElement('div');
+          div.textContent = `Drug: ${item.drug_name}, Pharmacy: ${item.dosage_form}, Therapeautic Class: ${item.therapeutic_class}, Route of administration: ${item.route_of_administration}, Dosage strength: ${item.dosage_strength}`;
+          stockLevelsDiv.appendChild(div);
+        } else {
+          // Handle the case where one or more properties are undefined
+          console.error('One or more expected properties are undefined in the response item:', item);
+        }
+      });
+    }
+    
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+// Attach the submitForm function to the form's submit event
+//document.querySelector('form').addEventListener('submit', submitForm);
+//console.log("form should have event listenter")
+</script>
+</head>
+<body>
+  <h1>Drug Search Helper</h1>
+  <form onsubmit="submitForm(event)">
+   
+    <label for="drugName">Name of Drug:</label>
+    <!-- <input type="text" id="name_of_drug" name="name_of_drug" required><br><br> -->
+
+    <select name="name_of_drug">
+      {% for drug in drugs %}
+          <option value="{{ drug }}">{{ drug }}</option>
+      {% endfor %}
+    </select><br><br>
+    
+
+ 
+
+    
+    <label for="pharmacyName">Name of Pharmacy:</label>
+    <input type="text" id="name_of_pharmacy" name="name_of_pharmacy"><br><br>
+    
+    <label for="userLocation">User Location:</label>
+    <input type="text" id="userLocation" name="userLocation"><br><br>
+    
+    <input type="submit" value="Submit Request">
+    <!-- <button type="button" onclick="submitForm(event)">Submit Request 2</button> -->
+  </form>
+  <!-- Placeholder for displaying pharmacy stock levels -->
+  <div id="stockLevels">
+    <!-- Dynamic content will be loaded here based on drug availability -->
+  </div>
+</body>
+</html>

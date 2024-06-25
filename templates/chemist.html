@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drug Search Helper</title>
+<style>
+  /* Add your CSS styling here */
+</style>
+</head>
+<body>
+  <h1>Pharmacy Information Form</h1>
+  <form method="post" action="/add_pharmacy">
+    <label for="pharmacy-name">pharmacy_name:</label>
+    <input type="text" id="pharmacy-name" name="pharmacy_name" required>
+
+    <label for="user-location">location:</label>
+    <input type="text" id="location" name="location" required>
+
+    <label for="drug-available">drug_available:</label>
+    <input type="text" id="drug_available" name="drug_available" required>
+
+    <label for="pharmacy-address">address:</label>
+    <input type="text" id="address" name="address" required>
+
+    <label for="pharmacy-hours">operating_hours:</label>
+    <input type="text" id="operating_hours" name="operating_hours" required>
+
+    <label for="pharmacy-contact">contact_information:</label>
+    <input type="text" id="contact_information" name="contact_information" required>
+
+    <label for="wheelchair-accessible">wheelchair_accessible:</label>
+    <select id="wheelchair_accessible" name="wheelchair_accessible">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <option value="limited">Limited</option>
+    </select>
+
+    <input type="submit" value="Submit Pharmacy Info">
+  </form>
+
+  <div id="pharmacy-listings">
+    <!-- Detailed view for pharmacy listings will be displayed here -->
+  </div>
+
+  <script>
+    // Add your JavaScript here
+  </script>
+</body>
+</html>
