@@ -148,7 +148,6 @@ WHERE pharmacy.pharmacy_name = %s
 (pharmacy_name, user_location, drug_name));
 
 
-    
 #SELECT d.drug_id as id, d.drug_name, d.dosage_form, d.therapeutic_class, d.route_of_administration, d.dosage_strength, pharmacy.pharmacy_name
 #FROM drugs as d
 #INNER JOIN connect ON d.drug_id = connect.drug_id

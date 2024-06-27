@@ -4,29 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drug Search Helper Form</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 </head>
 <body>
   <h1>Drug Information Form</h1>
-  <form method="post" action="/add_drug">
-    <label for="drugName">drug_name:</label>
-    <input type="text" id="drug_name" name="drug_name" required>
+  <div class="container"><form method="post" action="/add_drug">
+    <!-- <label for="drugName">drug_name:</label> -->
+    <!-- <input type="text" id="drug_name" name="drug_name" required> -->
+    <div class="mb-3">
+      <label for="drugName" class="form-label">drug_name</label>
+      <input type="text" class="form-control" id="name_of_drug" name="name_of_drug" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text"> .</div>
+    </div>
 
-    <label for="dosageForm">dosage_form:</label>
-    <input type="text" id="dosage_form" name="dosage_form" required>
+    <!-- <label for="dosageForm">dosage_form:</label> -->
+    <!-- <input type="text" id="dosage_form" name="dosage_form" required> -->
+    <div class="mb-3">
+      <label for="dosageForm" class="form-label">dosage_form</label>
+      <input type="text" class="form-control" id="dosage_form" name="dosage_form" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="therapeuticClass">therapeutic_class:</label>
-    <input type="text" id="therapeutic_class" name="therapeutic_class" required>
+    <!-- <label for="therapeuticClass">therapeutic_class:</label> -->
+    <!-- <input type="text" id="therapeutic_class" name="therapeutic_class" required> -->
+    <div class="mb-3">
+      <label for="therapeuticClass" class="form-label">therapeutic_class</label>
+      <input type="text" class="form-control" id="therapeutic_class" name="therapeutic_class" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="routeOfAdministration">route_of_administration:</label>
-    <input type="text" id="route_of_administration" name="route_of_administration" required>
+    <!-- <label for="routeOfAdministration">route_of_administration:</label> -->
+    <!-- <input type="text" id="route_of_administration" name="route_of_administration" required> -->
+    <div class="mb-3">
+      <label for="routeOfAdministration" class="form-label">route_of_administration</label>
+      <input type="text" class="form-control" id="route_of_administration" name="route_of_administration" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="dosageStrength">dosage_strength:</label>
-    <input type="text" id="dosage_strength" name="dosage_strength" required>
+    <!-- <label for="dosageStrength">dosage_strength:</label> -->
+    <!-- <input type="text" id="dosage_strength" name="dosage_strength" required> -->
+    <div class="mb-3">
+      <label for="dosageStrength" class="form-label">dosage_strength</label>
+      <input type="text" class="form-control" id="dosage_strength" name="dosage_strength" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="drugid">drug_id:</label>
-    <input type="text" id="drug_id" name="drug_id" required>
+    <!-- <label for="drugid">drug_id:</label> -->
+    <!-- <input type="text" id="drug_id" name="drug_id" required> -->
+    <div class="mb-3">
+      <label for="drugid" class="form-label">drug_id</label>
+      <input type="text" class="form-control" id="drug_id" name="drug_id" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <input type="submit" value="Submit">
-</form>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form></div>
 </body>
 </html>

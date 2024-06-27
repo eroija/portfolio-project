@@ -4,30 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drug Search Helper</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 <style>
   /* Add your CSS styling here */
 </style>
 </head>
 <body>
   <h1>Pharmacy Information Form</h1>
-  <form method="post" action="/add_pharmacy">
-    <label for="pharmacy-name">pharmacy_name:</label>
-    <input type="text" id="pharmacy-name" name="pharmacy_name" required>
+  <div class="container"><form method="post" action="/add_pharmacy">
+    <!-- <label for="pharmacy-name">pharmacy_name:</label> -->
+    <!-- <input type="text" id="pharmacy-name" name="pharmacy_name" required> -->
+    <div class="mb-3">
+      <label for="pharmacy-name" class="form-label">pharmacy_name</label>
+      <input type="text" class="form-control" id="pharmacy_name" name="pharmacy_name" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="user-location">location:</label>
-    <input type="text" id="location" name="location" required>
+    <!-- <label for="user-location">location:</label> -->
+    <!-- <input type="text" id="location" name="location" required> -->
+    <div class="mb-3">
+      <label for="user-location" class="form-label">location</label>
+      <input type="text" class="form-control" id="location" name="location" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
+    
 
-    <label for="drug-available">drug_available:</label>
-    <input type="text" id="drug_available" name="drug_available" required>
+    <!-- <label for="drug-available">drug_available:</label> -->
+    <!-- <input type="text" id="drug_available" name="drug_available" required> -->
+    <div class="mb-3">
+      <label for="drug-available" class="form-label">drug_available</label>
+      <input type="text" class="form-control" id="drug_available" name="drug_available" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="pharmacy-address">address:</label>
-    <input type="text" id="address" name="address" required>
+    <!-- <label for="pharmacy-address">address:</label> -->
+    <!-- <input type="text" id="address" name="address" required> -->
+    <div class="mb-3">
+      <label for="pharmacy-address" class="form-label">address</label>
+      <input type="text" class="form-control" id="address" name="address" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="pharmacy-hours">operating_hours:</label>
-    <input type="text" id="operating_hours" name="operating_hours" required>
+    <!-- <label for="pharmacy-hours">operating_hours:</label> -->
+    <!-- <input type="text" id="operating_hours" name="operating_hours" required> -->
+    <div class="mb-3">
+      <label for="pharmacy-hours" class="form-label">operating_hours</label>
+      <input type="text" class="form-control" id="operating_hours" name="operating_hours" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
 
-    <label for="pharmacy-contact">contact_information:</label>
-    <input type="text" id="contact_information" name="contact_information" required>
+    <!-- <label for="pharmacy-contact">contact_information:</label> -->
+    <!-- <input type="text" id="contact_information" name="contact_information" required> -->
+    <div class="mb-3">
+      <label for="pharmacy-contact" class="form-label">contact_information</label>
+      <input type="text" class="form-control" id="contact_information" name="contact_information" aria-describedby="textHelp">
+      <div id="textHelp" class="form-text">.</div>
+    </div>
+
 
     <label for="wheelchair-accessible">wheelchair_accessible:</label>
     <select id="wheelchair_accessible" name="wheelchair_accessible">
@@ -36,8 +69,8 @@
       <option value="limited">Limited</option>
     </select>
 
-    <input type="submit" value="Submit Pharmacy Info">
-  </form>
+    <input type="submit" value="Submit Pharmacy Info" class="btn btn-primary">   
+  </form></div>
 
   <div id="pharmacy-listings">
     <!-- Detailed view for pharmacy listings will be displayed here -->

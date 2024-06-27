@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drug Search Helper</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 <script>
 // JavaScript to handle location and drug availability
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Call getLocation when the form is loaded
-  getLocation();
+  // getLocation();
   
   // Placeholder function to fetch drug availability
   function checkDrugAvailability() {
@@ -51,6 +52,7 @@ function submitForm(event) {
   .then(data => {
     // Handle the JSON response here
     const stockLevelsDiv = document.getElementById('stockLevels');
+    stockLevelsDiv.setAttribute('class', 'container');
     stockLevelsDiv.innerHTML = ''; // Clear previous results
     //debugger;
     const isEmpty = Object.keys(data).length === 0;
@@ -60,20 +62,52 @@ function submitForm(event) {
       stockLevelsDiv.appendChild(div);
     } else {
       // Create and append elements for each item in the response
+      const table = document.createElement('table');
+      table.setAttribute('class', 'table'); 
+      const th1 = document.createElement('th');
+      const th2 = document.createElement('th');
+      const th3 = document.createElement('th');
+      const th4 = document.createElement('th');
+      const th5 = document.createElement('th');
+      th1.textContent = 'drug name'
+      th2.textContent = 'dosage form'
+      th3.textContent = 'therapeutic class'
+      th4.textContent = 'route of administration'
+      th5.textContent = 'dosage strength'
+      table.appendChild(th1);
+      table.appendChild(th2);
+      table.appendChild(th3);
+      table.appendChild(th4);
+      table.appendChild(th5);
       data.forEach(item => {
         // Check if the expected properties exist in the item
-
-
-
         if (item.drug_name && item.dosage_form && item.therapeutic_class && item.route_of_administration && item.dosage_strength) {
-          const div = document.createElement('div');
-          div.textContent = `Drug: ${item.drug_name}, Pharmacy: ${item.dosage_form}, Therapeautic Class: ${item.therapeutic_class}, Route of administration: ${item.route_of_administration}, Dosage strength: ${item.dosage_strength}`;
-          stockLevelsDiv.appendChild(div);
+         
+          
+          const tr = document.createElement('tr');
+          const td1 = document.createElement('td');
+          const td2 = document.createElement('td');
+          const td3 = document.createElement('td');
+          const td4 = document.createElement('td');
+          const td5 = document.createElement('td');
+          td1.textContent = item.drug_name
+          td2.textContent = item.dosage_form
+          td3.textContent = item.therapeutic_class
+          td4.textContent = item.route_of_administration
+          td5.textContent = item.dosage_strength
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
+          tr.appendChild(td5);
+          // div.textContent = `Drug: ${item.drug_name}, Pharmacy: ${item.dosage_form}, Therapeautic Class: ${item.therapeutic_class}, Route of administration: ${item.route_of_administration}, Dosage strength: ${item.dosage_strength}`;
+          table.appendChild(tr);
         } else {
           // Handle the case where one or more properties are undefined
           console.error('One or more expected properties are undefined in the response item:', item);
         }
       });
+      stockLevelsDiv.appendChild(table);
     }
     
   })
@@ -88,31 +122,35 @@ function submitForm(event) {
 </script>
 </head>
 <body>
-  <h1>Drug Search Helper</h1>
-  <form onsubmit="submitForm(event)">
-   
+  
+  <div class="container">
+    <h1>Drug Search Helper</h1>
+    <form onsubmit="submitForm(event)">
     <label for="drugName">Name of Drug:</label>
     <!-- <input type="text" id="name_of_drug" name="name_of_drug" required><br><br> -->
-
-    <select name="name_of_drug">
+    <select name="name_of_drug" class="form-select">
       {% for drug in drugs %}
           <option value="{{ drug }}">{{ drug }}</option>
       {% endfor %}
     </select><br><br>
+    <!-- <label for="pharmacyName">Name of Pharmacy:</label> -->
+    <!-- <input type="text" id="name_of_pharmacy" name="name_of_pharmacy"><br><br> -->
+    <div class="mb-3">
+      <label for="pharmacyName" class="form-label">Name of Pharmacy</label>
+      <input type="text" class="form-control" id="name_of_pharmacy" name="name_of_pharmacy" aria-describedby="textHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <!-- <label for="userLocation">User Location:</label> -->
+    <!-- <input type="text" id="userLocation" name="userLocation"><br><br> -->
+    <div class="mb-3">
+      <label for="userLocation" class="form-label">User Location</label>
+      <input type="text" class="form-control" id="userLocation" name="userLocation" aria-describedby="userLocation">
+      <div id="userLocationHelp" class="form-text">Enter pharmacy Location.</div>
+    </div>
     
-
- 
-
-    
-    <label for="pharmacyName">Name of Pharmacy:</label>
-    <input type="text" id="name_of_pharmacy" name="name_of_pharmacy"><br><br>
-    
-    <label for="userLocation">User Location:</label>
-    <input type="text" id="userLocation" name="userLocation"><br><br>
-    
-    <input type="submit" value="Submit Request">
+    <input type="submit" value="Submit Request" class="btn btn-primary">
     <!-- <button type="button" onclick="submitForm(event)">Submit Request 2</button> -->
-  </form>
+  </form></div>
   <!-- Placeholder for displaying pharmacy stock levels -->
   <div id="stockLevels">
     <!-- Dynamic content will be loaded here based on drug availability -->
