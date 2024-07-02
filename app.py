@@ -36,6 +36,10 @@ def drug():
 
     return render_template('drug.html')
 
+@app.route("/drug_search_helper")
+def drug_search_helper():
+    return render_template('drug_search_helper.html')
+
 @app.route('/add_drug', methods=['GET', 'POST'])
 def add_drug():
     if request.method == 'POST':
@@ -180,6 +184,9 @@ WHERE pharmacy.pharmacy_name = %s
 
     return {}
 
+app.route("/first")
+def home():
+    return render_template('landingpage.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

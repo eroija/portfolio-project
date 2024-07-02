@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRUG SEARCH HELPER</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0074D9;
+            color: #FFF;
+            padding: 20px;
+            text-align: center;
+        }
+        .cover-image {
+            /* Add styles for your cover image */
+        }
+        .project-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .project-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .navigation {
+            /* Add styles for navigation elements */
+        }
+        .deploy-button {
+            background-color: #2ECC40;
+            color: #FFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="cover-image" src="{{url_for('static', filename='cover-image.jpg')}}" alt="Cover Image">
+        <div class="project-name">FAST DRUG</div>
+        <div class="project-description">Making drug access easier for everyone.</div>
+        <nav class="navigation">
+            <a href="#section1">Section 1</a>
+            <a href="#section2">Section 2</a>
+            <!-- Add more navigation links as needed -->
+        </nav>
+        <button class="deploy-button">Deployed Application</button>
+    </header>
+    <!-- Add your other sections and content here -->
+
+    <section id="features">
+        <div class="feature">
+            <img src="{{url_for('static', filename='drugsearch (2).jpg')}}" alt="Feature 1">
+            <h2>Drug Search</h2>
+            <p>Feature 1 Quickly finds drugs by typing their name, name of pharmacy and location of the pharmacy</p>
+        </div>
+
+        <div class="feature">
+            <img src="{{url_for('static', filename='drug.jpg')}}" alt="Feature 2">
+            <h2>Drug Addition</h2>
+            <p>Feature 2 enables for new entry of drugs to be filled in the database</p>
+        </div>
+
+        <div class="feature">
+            <img src="{{url_for('static', filename='pharmacy.jpg')}}" alt="Feature 3">
+            <h2>Pharmacy Addition</h2>
+            <p>Feature 3 enables new entry of pharmacy to be filled in</p>
+        </div>
+    </section>
+
+    <!-- Add an About section -->
+    <section id="about">
+        <h2>About My Project</h2>
+        <p>
+            My "DRUG SEARCH HELPER" project was inspired by the need to simplify access to essential medications. As an individual, I embarked on this journey to create a user-friendly platform that empowers individuals to find drugs quickly and efficiently.
+        </p>
+        <p>
+            This project is a Portfolio Project for Holberton School, where I combined my skills, creativity, and passion to make a positive impact. Explore my profile below:
+        </p>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/eric-imamai-61494a25a/"> (LinkedIn)</a></li>
+            <li><a href="https://github.com/eroija">(GitHub)</a></li>
+            <li><a href="https://twitter.com/EImamai">(X)</a></li> 
+        </ul>
+        <p>
+            Check out my GitHub repository: <a href="https://github.com/eroija/portfolio-project">DRUG SEARCH HELPER Repository</a>
+        </p>
+    </section>
+
+</body>
+</html>
