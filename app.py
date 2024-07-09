@@ -27,35 +27,31 @@ def index():
     results = [result[0] for result in results]
     return render_template('index.html', drugs = results)
 
-@app.route("/chemist")
-def chemist():
-    return render_template('chemist.html')
-
-@app.route("/drug")
-def drug():
-
-    return render_template('drug.html')
-
 @app.route("/drug_search_helper")
 def drug_search_helper():
     return render_template('drug_search_helper.html')
 
 @app.route('/add_drug', methods=['GET', 'POST'])
 def add_drug():
+    
     if request.method == 'POST':
         # Get drug data from the form
-        drug_name = request.form['drug_name']
-        dosage_form = request.form['dosage_form']
-        therapeutic_class = request.form['therapeutic_class']
-        route_of_administration = request.form['route_of_administration']
-        dosage_strength = request.form['dosage_strength']
-        drug_id = request.form['drug_id']
+        #import ipdb
+        #ipdb.set_trace()
+        drug_name = request.form.get('name_of_drug')
+        dosage_form = request.form.get('dosage_form')
+        therapeutic_class = request.form.get('therapeutic_class')
+        route_of_administration = request.form.get('route_of_administration')
+        dosage_strength = request.form.get('dosage_strength')
+       #drug_id = request.form['drug_id']
+
+        
 
         # Create a cursor object
         cur = mysql.connection.cursor()
 
         # Execute the SQL query
-        cur.execute("INSERT INTO drugs(drug_name, dosage_form, therapeutic_class, route_of_administration, dosage_strength, drug_id) VALUES (%s, %s, %s, %s, %s, %s)", (drug_name, dosage_form, therapeutic_class, route_of_administration, dosage_strength, drug_id))
+        cur.execute("INSERT INTO drugs(drug_name, dosage_form, therapeutic_class, route_of_administration, dosage_strength) VALUES (%s, %s, %s, %s, %s)", (drug_name, dosage_form, therapeutic_class, route_of_administration, dosage_strength))
 
         # Commit to the database
         mysql.connection.commit()
